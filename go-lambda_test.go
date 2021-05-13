@@ -14,7 +14,7 @@ func TestGoLambdaStack(t *testing.T) {
 	app := awscdk.NewApp(nil)
 
 	// WHEN
-	stack := NewGoLambdaStack(app, "MyStack", nil)
+	stack := NewLambdaStack(app, "MyStack", nil)
 
 	// THEN
 	bytes, err := json.Marshal(app.Synth(nil).GetStackArtifact(stack.ArtifactId()).Template())
@@ -23,6 +23,6 @@ func TestGoLambdaStack(t *testing.T) {
 	}
 
 	template := gjson.ParseBytes(bytes)
-	displayName := template.Get("Resources.MyTopic86869434.Properties.DisplayName").String()
-	assert.Equal(t, "MyCoolTopic", displayName)
+	displayName := template.Get("Resources.Singleton8C7B99F3.Properties.FunctionName").String()
+	assert.Equal(t, "MyLambda", displayName)
 }

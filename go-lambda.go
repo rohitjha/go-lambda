@@ -7,11 +7,11 @@ import (
 	"github.com/aws/jsii-runtime-go"
 )
 
-type GoLambdaStackProps struct {
+type LambdaStackProps struct {
 	awscdk.StackProps
 }
 
-func NewGoLambdaStack(scope constructs.Construct, id string, props *GoLambdaStackProps) awscdk.Stack {
+func NewLambdaStack(scope constructs.Construct, id string, props *LambdaStackProps) awscdk.Stack {
 	var sprops awscdk.StackProps
 	if props != nil {
 		sprops = props.StackProps
@@ -22,10 +22,10 @@ func NewGoLambdaStack(scope constructs.Construct, id string, props *GoLambdaStac
 		Code:         awslambda.NewAssetCode(jsii.String("lambda"), nil),
 		Handler:      jsii.String("handler.main"),
 		Timeout:      awscdk.Duration_Seconds(jsii.Number(900)),
-		Runtime:      awslambda.Runtime_GO_1_X(),
 		MemorySize:   jsii.Number(128.0),
-		Description:  jsii.String("Simple Lambda in Go"),
-		FunctionName: jsii.String("GoLambda"),
+		Description:  jsii.String("Simple Lambda"),
+		FunctionName: jsii.String("MyLambda"),
+		Runtime:      awslambda.Runtime_PYTHON_3_8(),
 	})
 
 	return stack
@@ -34,7 +34,7 @@ func NewGoLambdaStack(scope constructs.Construct, id string, props *GoLambdaStac
 func main() {
 	app := awscdk.NewApp(nil)
 
-	NewGoLambdaStack(app, "GoLambdaStack", &GoLambdaStackProps{
+	NewLambdaStack(app, "GoLambdaStack", &LambdaStackProps{
 		awscdk.StackProps{
 			Env: env(),
 		},
