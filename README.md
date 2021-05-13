@@ -25,5 +25,11 @@ cdk bootstrap aws://238220415119/us-west-2 --profile personal
 
 ```bash
 go test
-cdk deploy
+cdk deploy --profile personal
+```
+
+## Steps to decommission
+
+```bash
+cdk destroy --profile personal
 ```
