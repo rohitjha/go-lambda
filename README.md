@@ -1,4 +1,4 @@
-# Welcome to your CDK Go project!
+# Welcome to your CDK Go project
 
 This is a blank project for Go development with CDK.
 
@@ -12,3 +12,18 @@ about your experience through GitHub issues.
  * `cdk diff`        compare deployed stack with current state
  * `cdk synth`       emits the synthesized CloudFormation template
  * `go test`         run unit tests
+
+## Bootstrap
+
+One-time:
+
+```bash
+cdk bootstrap aws://238220415119/us-west-2 --profile personal
+```
+
+## Steps to test and deploy
+
+```bash
+go test
+cdk deploy
+```
