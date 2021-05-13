@@ -18,7 +18,7 @@ func NewLambdaStack(scope constructs.Construct, id string, props *LambdaStackPro
 	}
 	stack := awscdk.NewStack(scope, &id, &sprops)
 
-	awslambda.NewFunction(stack, jsii.String("Singleton"), &awslambda.FunctionProps{
+	awslambda.NewFunction(stack, jsii.String("MyLambda"), &awslambda.FunctionProps{
 		Code:         awslambda.NewAssetCode(jsii.String("lambda"), nil),
 		Handler:      jsii.String("handler.main"),
 		Timeout:      awscdk.Duration_Seconds(jsii.Number(900)),
@@ -34,7 +34,7 @@ func NewLambdaStack(scope constructs.Construct, id string, props *LambdaStackPro
 func main() {
 	app := awscdk.NewApp(nil)
 
-	NewLambdaStack(app, "GoLambdaStack", &LambdaStackProps{
+	NewLambdaStack(app, "LambdaStack", &LambdaStackProps{
 		awscdk.StackProps{
 			Env: env(),
 		},
