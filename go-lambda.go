@@ -19,7 +19,7 @@ func NewLambdaStack(scope constructs.Construct, id string, props *LambdaStackPro
 	stack := awscdk.NewStack(scope, &id, &sprops)
 
 	awslambda.NewFunction(stack, jsii.String("MyLambda"), &awslambda.FunctionProps{
-		Code:         awslambda.NewAssetCode(jsii.String("lambda"), nil),
+		Code:         awslambda.NewAssetCode(jsii.String("../lambda/python"), nil),
 		Handler:      jsii.String("handler.main"),
 		Timeout:      awscdk.Duration_Seconds(jsii.Number(900)),
 		MemorySize:   jsii.Number(128.0),
